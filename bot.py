@@ -24,6 +24,7 @@ kb_power_options.add(button_reset_all, button_turn_off)
 
 kb_yes_or_no = InlineKeyboardMarkup().add(button_yes, button_no)
 
+
 # Хэндлер на команду /start
 @dp.message_handler(commands=["start"])
 async def cmd_start(message: types.Message):
