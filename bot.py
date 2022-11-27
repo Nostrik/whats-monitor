@@ -1,4 +1,5 @@
 import asyncio
+import time
 import logging
 from aiogram import Bot, Dispatcher, types
 from config import token_bot
@@ -6,11 +7,8 @@ from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
 
-# Включаем логирование, чтобы не пропустить важные сообщения
-logging.basicConfig(level=logging.DEBUG)
-# Объект бота
+logging.basicConfig(level=logging.INFO)
 bot = Bot(token=token_bot)
-# Диспетчер
 dp = Dispatcher(bot)
 
 # buttons
@@ -35,28 +33,26 @@ async def cmd_start(message: types.Message):
     )
 
 
+#  cmd for power func
 @dp.message_handler(commands=["power"])
 async def cmd_pwer(message: types.Message):
     await message.answer('-- power options --', reply_markup=kb_power_options)
-    await message.answer('Are you sure?', reply_markup=kb_yes_or_no)
 
 
+# for show cmd
 @dp.message_handler(commands=["show"])
 async def cmd_pwer(message: types.Message):
     await message.answer('-- all miners --')
 
-
-async def turn_reset_miners(message: types.Message):
-    await message.answer('Reset all miners')
-    await message.answer('Are you sure?', reply_markup=kb_yes_or_no)
-
-
-async def turn_on_of_miners(message: types.Message):
-    await message.answer('On/Off all miners')
-    await message.answer('Are you sure?', reply_markup=kb_yes_or_no)
+# handler
+@dp.message_handler()
+async def handler(message: types.Message):
+    if message.text == 'Reset all miners':
+        await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
+    elif message.text == 'Turn on/off all miners':
+        await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
 
 
-# Запуск процесса поллинга новых апдейтов
 async def main():
     await dp.start_polling(bot)
 
