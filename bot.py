@@ -44,6 +44,7 @@ async def cmd_pwer(message: types.Message):
 async def cmd_pwer(message: types.Message):
     await message.answer('-- all miners --')
 
+
 # handler
 @dp.message_handler()
 async def handler(message: types.Message):
@@ -51,6 +52,16 @@ async def handler(message: types.Message):
         await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
     elif message.text == 'Turn on/off all miners':
         await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
+
+
+@dp.callback_query_handler(text='yes')
+async def sure_handler(message: types.Message):
+    await message.answer('you sad yes')
+
+
+@dp.callback_query_handler(text='no')
+async def sure_handler(message: types.Message):
+    await message.answer('you sad no')
 
 
 async def main():
