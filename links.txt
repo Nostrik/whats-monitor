@@ -1,3 +1,10 @@
-https://mastergroosha.github.io/aiogram-3-guide/quickstart/
-https://surik00.gitbooks.io/aiogram-lessons/content/chapter1.html
-https://habr.com/ru/post/150047/
+bot:
+	https://mastergroosha.github.io/aiogram-3-guide/quickstart/
+	https://surik00.gitbooks.io/aiogram-lessons/content/chapter1.html
+
+python_ssh:
+	https://habr.com/ru/post/150047/
+	https://linuxhint.com/paramiko-python/
+
+miner_tools:
+	https://github.com/satoshi-anonymoto/whatsminer-api
