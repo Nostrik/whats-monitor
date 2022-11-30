@@ -8,3 +8,6 @@ python_ssh:
 
 miner_tools:
 	https://github.com/satoshi-anonymoto/whatsminer-api
+
+innosilicone_api:
+    https://github.com/brndnmtthws/dragon-rest
