@@ -9,5 +9,8 @@ python_ssh:
 miner_tools:
 	https://github.com/satoshi-anonymoto/whatsminer-api
 
-innosilicone_api:
+innosilicon_api:
     https://github.com/brndnmtthws/dragon-rest
+
+snmp_help:
+    https://pcnews.ru/blogs/prostye_zaprosy_snmp_v_python_s_pomosu_pysnmp-1103762.html#gsc.tab=0
