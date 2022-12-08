@@ -3,7 +3,7 @@ from pprint import pprint
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger("[miners_api]")
+logger = logging.getLogger("[whatsminer_api]")
 
 w_miners = [
     '192.168.1.40',
@@ -18,18 +18,19 @@ tokens = []
 asic_responses = []
 
 
-def get_access_token(ip_addr: str):
+def get_access_token(ip_address: str) -> WhatsminerAccessToken:
     try:
-        token_for_access = WhatsminerAccessToken(ip_address=ip_addr)
-        logger.debug(token_for_access)
+        token_for_access = WhatsminerAccessToken(ip_address=ip_address)
+        logger.debug(type(token_for_access))
         return token_for_access
     except Exception as er:
         logger.exception(er)
 
 
-def get_asic_info_with_token(token):
+def get_asic_info_with_token(token: WhatsminerAccessToken) -> WhatsminerAPI:
     try:
         info = WhatsminerAPI.get_read_only_info(access_token=token, cmd="summary")
+        logger.debug(type(info))
         return info
     except Exception as er:
         logger.exception(er)
