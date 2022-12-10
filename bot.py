@@ -6,6 +6,7 @@ from config import token_bot
 from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
+from handlers import get_all_miners
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=token_bot)
@@ -41,8 +42,18 @@ async def cmd_pwer(message: types.Message):
 
 # for show cmd
 @dp.message_handler(commands=["show"])
-async def cmd_pwer(message: types.Message):
+async def show_all(message: types.Message):
     await message.answer('-- all miners --')
+    all_miners = get_all_miners()
+    for one_miner in all_miners:
+        await message.answer(
+            f"Miner type: {one_miner.name}, ip: {one_miner.ip_address}\n"
+            f"Errors: {one_miner.error_code}, Up Time: {one_miner.up_time}\n"
+            f"Hash rate: {one_miner.ths_rt}, Power: {one_miner.power_w}\n"
+            f"Speed In: {one_miner.speed_in}, Speed out: {one_miner.speed_out}\n"
+            f"Temperature: {one_miner.temperature}"
+        )
+    await message.answer('-- end --')
 
 
 # handler
@@ -66,6 +77,11 @@ async def sure_handler(message: types.Message):
 
 async def main():
     await dp.start_polling(bot)
+
+
+def get_miners():
+    ...
+
 
 if __name__ == "__main__":
     asyncio.run(main())

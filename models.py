@@ -15,6 +15,7 @@ class Whatsminer:
     freq_avg: str
     speed_in: str
     speed_out: str
+    temperature: str
     worker: str
     other_info: dict
 

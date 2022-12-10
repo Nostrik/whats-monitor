@@ -21,7 +21,6 @@ asic_responses = []
 def get_access_token(ip_address: str) -> WhatsminerAccessToken:
     try:
         token_for_access = WhatsminerAccessToken(ip_address=ip_address)
-        logger.debug(type(token_for_access))
         return token_for_access
     except Exception as er:
         logger.exception(er)
@@ -30,7 +29,6 @@ def get_access_token(ip_address: str) -> WhatsminerAccessToken:
 def get_asic_info_with_token(token: WhatsminerAccessToken) -> WhatsminerAPI:
     try:
         info = WhatsminerAPI.get_read_only_info(access_token=token, cmd="summary")
-        logger.debug(type(info))
         return info
     except Exception as er:
         logger.exception(er)
