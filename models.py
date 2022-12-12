@@ -19,6 +19,9 @@ class Whatsminer:
     worker: str
     other_info: dict
 
+    def is_miner_type(self):
+        return 'WM'
+
 
 @dataclass
 class Innosilicon:
@@ -28,7 +31,10 @@ class Innosilicon:
     user: str
     miner_type: str
     up_time: str
-    accepted_rate: str
+    accepted_rate: list
     fan_duty: str
     total_hash: str
     other_info: dict
+
+    def is_miner_type(self):
+        return 'IS'

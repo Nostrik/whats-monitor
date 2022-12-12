@@ -49,7 +49,7 @@ async def show_all(message: types.Message):
         await message.answer(
             f"Miner type: {one_miner.name}, ip: {one_miner.ip_address}\n"
             f"Errors: {one_miner.error_code}, Up Time: {one_miner.up_time}\n"
-            f"Hash rate: {one_miner.ths_rt}, Power: {one_miner.power_w}\n"
+            f"Power: {one_miner.power_w}, Hash-rate: {one_miner.ths_rt}\n"
             f"Speed In: {one_miner.speed_in}, Speed out: {one_miner.speed_out}\n"
             f"Temperature: {one_miner.temperature}"
         )
