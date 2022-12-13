@@ -34,11 +34,11 @@ def get_asic_info_with_token(token: WhatsminerAccessToken) -> WhatsminerAPI:
         logger.exception(er)
 
 
-if __name__ == "__main__":
-
-    for a in w_miners:
-        tokens.append(get_access_token(a))
-    for token in tokens:
-        asic_responses.append(get_asic_info_with_token(token))
-    pprint(asic_responses)
-    print(len(asic_responses))
+# if __name__ == "__main__":
+#
+#     for a in w_miners:
+#         tokens.append(get_access_token(a))
+#     for token in tokens:
+#         asic_responses.append(get_asic_info_with_token(token))
+#     pprint(asic_responses)
+#     print(len(asic_responses))

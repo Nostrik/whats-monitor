@@ -46,13 +46,20 @@ async def show_all(message: types.Message):
     await message.answer('-- all miners --')
     all_miners = get_all_miners()
     for one_miner in all_miners:
-        await message.answer(
-            f"Miner type: {one_miner.name}, ip: {one_miner.ip_address}\n"
-            f"Errors: {one_miner.error_code}, Up Time: {one_miner.up_time}\n"
-            f"Power: {one_miner.power_w}, Hash-rate: {one_miner.ths_rt}\n"
-            f"Speed In: {one_miner.speed_in}, Speed out: {one_miner.speed_out}\n"
-            f"Temperature: {one_miner.temperature}"
-        )
+        if one_miner.is_miner() == 'WM':
+            await message.answer(
+                f"Miner type: {one_miner.name}, ip: {one_miner.ip_address}\n"
+                f"Errors: {one_miner.error_code}, Up Time: {one_miner.up_time}\n"
+                f"Power: {one_miner.power_w}, Hash-rate: {one_miner.ths_rt}\n"
+                f"Speed In: {one_miner.speed_in}, Speed out: {one_miner.speed_out}\n"
+                f"Temperature: {one_miner.temperature} /more"
+            )
+        elif one_miner.is_miner() == 'IS':
+            await message.answer(
+                f"Miner type: {one_miner.name}, ip: {one_miner.ip_address}\n"
+                f"User: {one_miner.user}, Fan duty: {one_miner.fan_duty}\n"
+                f"Hash-rate: {one_miner.total_hash} /more"
+            )
     await message.answer('-- end --')
 
 

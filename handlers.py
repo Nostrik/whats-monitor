@@ -28,6 +28,7 @@ def get_one_whatsminer_with_api(miner_ip_address: str):
             worker='[worker]',
             other_info={'other_info': 'none'}
         )
+        handler_logger.info(f'miner - ip: {miner_ip_address} type: whatsminer, was answered')
         return miner_object
     except Exception as er:
         handler_logger.exception(er)
@@ -52,6 +53,7 @@ def get_one_innosilicon_with_api(miner_ip_address: str, username='admin', passwo
             total_hash=asic_summary['TotalHash'],
             other_info={'other_info': 'none'}
         )
+        handler_logger.info(f'miner - ip: {miner_ip_address} type: innosilicon, was answered')
         return miner_object
     except Exception as er:
         handler_logger.exception(er)

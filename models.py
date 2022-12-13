@@ -19,7 +19,7 @@ class Whatsminer:
     worker: str
     other_info: dict
 
-    def is_miner_type(self):
+    def is_miner(self):
         return 'WM'
 
 
@@ -36,5 +36,5 @@ class Innosilicon:
     total_hash: str
     other_info: dict
 
-    def is_miner_type(self):
+    def is_miner(self):
         return 'IS'

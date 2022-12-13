@@ -6,8 +6,8 @@ if __name__ == "__main__":
 
     errorIndication, errorStatus, errorIndex, varBindTable = cmdGen.nextCmd(
         cmdgen.CommunityData('XFiles'),
-        cmdgen.UdpTransportTarget(('172.18.114.6', 161)),
-        '1.3.6.1.2.1.17.7.1.2.2.1.2'
+        cmdgen.UdpTransportTarget(('192.168.1.2', 161)),
+        '.1.3.6.1.4.1.40418.2.4.4.1.0'
     )
 
     if errorIndication:
