@@ -2,7 +2,7 @@ from whatsminer import WhatsminerAccessToken, WhatsminerAPI
 from pprint import pprint
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("[whatsminer_api]")
 
 w_miners = [

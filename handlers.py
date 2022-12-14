@@ -4,7 +4,7 @@ from whatsminer_api import get_access_token, get_asic_info_with_token
 from innosilicon_api import get_asic_info, get_summary
 from config import glob_miners_list
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 handler_logger = logging.getLogger('[handlers]')
 
 

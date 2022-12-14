@@ -3,7 +3,7 @@ from pprint import pprint
 from typing import Type
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("[innosilicon_api]")
 
 miners = [

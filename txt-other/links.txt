@@ -14,3 +14,4 @@ innosilicon_api:
 
 snmp_help:
     https://pcnews.ru/blogs/prostye_zaprosy_snmp_v_python_s_pomosu_pysnmp-1103762.html#gsc.tab=0
+    https://www.ictshore.com/sdn/python-snmp-tutorial/
