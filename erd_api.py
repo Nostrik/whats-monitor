@@ -51,5 +51,20 @@ def send_trap():
         print(errorIndication)
 
 
+def request_one_iod():
+    erd3temperatureSensor0 = '.1.3.6.1.4.1.40418.2.4.4.1.0'
+    # errorIndication, errorStatus, errorIndex, varBindTable = cmdgen.nextCmd((
+    #     cmdgen.CommunityData(ro_community, mpModel=1),
+    #     cmdgen.UdpTransportTarget((net_address, 161)),
+    #     ('1.3.6.1.2.1.2.2.1.7'),
+    #     ('1.3.6.1.2.1.2.2.1.8'),
+    #     ('1.3.6.1.2.1.2.2.1.10'),
+    #     ('1.3.6.1.2.1.2.2.1.16')
+    # )
+    a, b, c, d = cmdgen.nextCmd(
+
+    )
+
+
 if __name__ == "__main__":
-    get_value()
+    request_one_iod()
