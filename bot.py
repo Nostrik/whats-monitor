@@ -86,9 +86,5 @@ async def main():
     await dp.start_polling(bot)
 
 
-def get_miners():
-    ...
-
-
 if __name__ == "__main__":
     asyncio.run(main())
