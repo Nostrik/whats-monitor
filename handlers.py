@@ -1,4 +1,5 @@
 import logging
+from threading import Thread, Barrier
 from models import Whatsminer, Innosilicon
 from whatsminer_api import get_access_token, get_asic_info_with_token
 from innosilicon_api import get_asic_info, get_summary
@@ -63,7 +64,10 @@ def get_all_miners():
     miners_obj_list = []
     for miner_note in glob_miners_list:
         if miner_note['code_name'] == 'WM':
-            miners_obj_list.append(get_one_whatsminer_with_api(miner_note['ip']))
+            try:
+                miners_obj_list.append(get_one_whatsminer_with_api(miner_note['ip']))
+            except Exception as er:
+                handler_logger.exception(er)
         elif miner_note['code_name'] == 'IS':
             miners_obj_list.append(get_one_innosilicon_with_api(miner_note['ip']))
         else:
