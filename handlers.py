@@ -64,10 +64,7 @@ def get_all_miners():
     miners_obj_list = []
     for miner_note in glob_miners_list:
         if miner_note['code_name'] == 'WM':
-            try:
-                miners_obj_list.append(get_one_whatsminer_with_api(miner_note['ip']))
-            except Exception as er:
-                handler_logger.exception(er)
+            miners_obj_list.append(get_one_whatsminer_with_api(miner_note['ip']))
         elif miner_note['code_name'] == 'IS':
             miners_obj_list.append(get_one_innosilicon_with_api(miner_note['ip']))
         else:

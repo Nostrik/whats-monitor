@@ -9,6 +9,7 @@ from aiogram.types import ReplyKeyboardRemove, \
 from handlers import get_all_miners
 
 logging.basicConfig(level=logging.INFO)
+bot_logger = logging.getLogger('[bot_logger]')
 bot = Bot(token=token_bot)
 dp = Dispatcher(bot)
 
@@ -27,6 +28,7 @@ kb_yes_or_no = InlineKeyboardMarkup().add(button_yes, button_no)
 # Хэндлер на команду /start
 @dp.message_handler(commands=["start"])
 async def cmd_start(message: types.Message):
+    bot_logger.info('user set start command')
     await message.answer(
         "Some actions for asic farm:\n"+
         "/power - for manage power options\n"+
@@ -43,6 +45,7 @@ async def cmd_pwer(message: types.Message):
 # for show cmd
 @dp.message_handler(commands=["show"])
 async def show_all(message: types.Message):
+    bot_logger.info('user set show all miners command')
     await message.answer('-- all miners --')
     all_miners = get_all_miners()
     for one_miner in all_miners:
@@ -67,8 +70,10 @@ async def show_all(message: types.Message):
 @dp.message_handler()
 async def handler(message: types.Message):
     if message.text == 'Reset all miners':
+        bot_logger.info('user change reset all miners command')
         await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
     elif message.text == 'Turn on/off all miners':
+        bot_logger.info('user change on/off miners command')
         await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
 
 
