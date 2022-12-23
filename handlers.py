@@ -1,6 +1,6 @@
 import logging
 from threading import Thread, Barrier
-from models import Whatsminer, Innosilicon
+from models import Whatsminer, Innosilicon, NotAvailableMiner
 from whatsminer_api import get_access_token, get_asic_info_with_token
 from innosilicon_api import get_asic_info, get_summary
 from config import glob_miners_list
@@ -60,6 +60,17 @@ def get_one_innosilicon_with_api(miner_ip_address: str, username='admin', passwo
         handler_logger.exception(er)
 
 
+def set_none_type_miner(miner_ip_address: str):
+    try:
+        none_miner_obj = NotAvailableMiner(
+            ipaddress=miner_ip_address,
+            error_msg='miner is not available..'
+        )
+        return none_miner_obj
+    except Exception as er:
+        handler_logger.exception(er)
+
+
 def get_all_miners():
     miners_obj_list = []
     for miner_note in glob_miners_list:
@@ -68,5 +79,6 @@ def get_all_miners():
         elif miner_note['code_name'] == 'IS':
             miners_obj_list.append(get_one_innosilicon_with_api(miner_note['ip']))
         else:
+            miners_obj_list.append()
             handler_logger.error('There is no handler for this equipment')
     return miners_obj_list

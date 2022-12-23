@@ -38,3 +38,13 @@ class Innosilicon:
 
     def is_miner(self):
         return 'IS'
+
+
+@dataclass
+class NotAvailableMiner:
+
+    ipaddress: str
+    error_msg: str
+
+    def is_miner(self):
+        return 'NoneType'
