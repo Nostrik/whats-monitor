@@ -25,12 +25,11 @@ kb_power_options.add(button_reset_all, button_turn_off)
 kb_yes_or_no = InlineKeyboardMarkup().add(button_yes, button_no)
 
 
-# Хэндлер на команду /start
-@dp.message_handler(commands=["start"])
+@dp.message_handler(commands=["help"])
 async def cmd_start(message: types.Message):
     bot_logger.info('user push start command')
     await message.answer(
-        "Some actions for asic farm:\n"+
+        "Actions for asic farm:\n"+
         "/power - for manage power options\n"+
         "/show - show all miners"
     )
@@ -49,20 +48,7 @@ async def show_all(message: types.Message):
     await message.answer('-- all miners --')
     all_miners = get_all_miners()
     for one_miner in all_miners:
-        if one_miner.is_miner() == 'WM':
-            await message.answer(
-                f"Miner type: {one_miner.name}, ip: {one_miner.ip_address}\n"
-                f"Errors: {one_miner.error_code}, Up Time: {one_miner.up_time}\n"
-                f"Power: {one_miner.power_w}, Hash-rate: {one_miner.ths_rt}\n"
-                f"Speed In: {one_miner.speed_in}, Speed out: {one_miner.speed_out}\n"
-                f"Temperature: {one_miner.temperature} /more"
-            )
-        elif one_miner.is_miner() == 'IS':
-            await message.answer(
-                f"Miner type: {one_miner.name}, ip: {one_miner.ip_address}\n"
-                f"User: {one_miner.user}, Fan duty: {one_miner.fan_duty}\n"
-                f"Hash-rate: {one_miner.total_hash} /more"
-            )
+        await message.answer(one_miner.get_info())
     await message.answer('-- end --')
 
 

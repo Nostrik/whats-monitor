@@ -22,6 +22,14 @@ class Whatsminer:
     def is_miner(self):
         return 'WM'
 
+    def get_info(self):
+        miner_info = f"Miner type: {self.name}, ip: {self.ip_address}\n"\
+                     f"Errors: {self.error_code}, Up Time: {self.up_time}\n"\
+                     f"Power: {self.power_w}, Hash-rate: {self.ths_rt}\n"\
+                     f"Speed In: {self.speed_in}, Speed out: {self.speed_out}\n"\
+                     f"Temperature: {self.temperature}"
+        return miner_info
+
 
 @dataclass
 class Innosilicon:
@@ -37,7 +45,13 @@ class Innosilicon:
     other_info: dict
 
     def is_miner(self):
-        return 'IS'
+        return
+
+    def get_info(self):
+        miner_info = f"Miner type: {self.name}, ip: {self.ip_address}\n"\
+                     f"User: {self.user}, Fan duty: {self.fan_duty}\n"\
+                     f"Hash-rate: {self.total_hash} /more"
+        return miner_info
 
 
 @dataclass
