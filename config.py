@@ -1,4 +1,8 @@
+import dotenv
+import os
+
 token_bot = "5811850717:AAGGbNLV0F73SUJJXJ9m4ZnkOxFTjCt0QVI"
+token_bot2 = os.getenv('token')
 
 
 # Code_names: WM is whatsminer, IS is innosilicon.

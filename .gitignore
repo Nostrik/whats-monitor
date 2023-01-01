@@ -2,3 +2,4 @@ w_venv/
 w-venv/
 venv/
 .idea/
+.env
