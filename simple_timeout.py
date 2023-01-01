@@ -28,7 +28,7 @@ import timeout_decorator
 @timeout_decorator.timeout(5, timeout_exception=StopIteration)
 def mytest():
     print("Start")
-    for i in range(1,10):
+    for i in range(1, 10):
         time.sleep(1)
         print("{} seconds have passed".format(i))
 
