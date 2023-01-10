@@ -7,6 +7,7 @@ from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
 from handlers import get_all_miners
+from handlers import power_managment
 
 logging.basicConfig(level=logging.INFO)
 bot_logger = logging.getLogger('[bot_logger]')
@@ -15,23 +16,23 @@ dp = Dispatcher(bot)
 
 # buttons
 button_reset_all = KeyboardButton('Reset all miners')
-button_turn_off = KeyboardButton('Turn on/off all miners')
+button_turn_off = InlineKeyboardButton('Turn on/off all miners', callback_data='on/off')
 button_yes = InlineKeyboardButton('Yes', callback_data='yes')
 button_no = InlineKeyboardButton('No', callback_data='no')
 
-kb_power_options = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-kb_power_options.add(button_reset_all, button_turn_off)
+kb_power_options = InlineKeyboardMarkup().add(button_turn_off)
 
 kb_yes_or_no = InlineKeyboardMarkup().add(button_yes, button_no)
 
 
 @dp.message_handler(commands=["help"])
 async def cmd_start(message: types.Message):
-    bot_logger.info('user push start command')
+    bot_logger.info('user push help command')
     await message.answer(
         "Actions for asic farm:\n"+
         "/power - for manage power options\n"+
-        "/show - show all miners"
+        "/show - show all miners\n"+
+        "/ping - ping network items"
     )
 
 
@@ -52,25 +53,11 @@ async def show_all(message: types.Message):
     await message.answer('-- end --')
 
 
-# handler
-@dp.message_handler()
-async def handler(message: types.Message):
-    if message.text == 'Reset all miners':
-        bot_logger.info('user push reset all miners command')
-        await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
-    elif message.text == 'Turn on/off all miners':
-        bot_logger.info('user push on/off miners command')
-        await message.reply('Are you sure?', reply_markup=kb_yes_or_no)
-
-
-@dp.callback_query_handler(text='yes')
-async def sure_handler(message: types.Message):
-    await message.answer('you sad yes')
-
-
-@dp.callback_query_handler(text='no')
-async def sure_handler(message: types.Message):
-    await message.answer('you sad no')
+@dp.callback_query_handler(text='on/off')
+async def power_manager(message: types.Message):
+    await message.answer('ON/OFF')
+    bot_logger.info('user turn ON/OFF farm')
+    power_managment()
 
 
 async def main():

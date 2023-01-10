@@ -4,6 +4,7 @@ from models import Whatsminer, Innosilicon, NotAvailableMiner
 from whatsminer_api import get_access_token, get_asic_info_with_token
 from innosilicon_api import get_asic_info, get_summary
 from config import glob_miners_list
+from erd_api import set_one_iod, get_one_iod
 
 logging.basicConfig(level=logging.INFO)
 handler_logger = logging.getLogger('[handlers]')
@@ -82,3 +83,25 @@ def get_all_miners():
             miners_obj_list.append()
             handler_logger.error('There is no handler for this equipment')
     return miners_obj_list
+
+
+def power_managment():
+    target_value = '.1.3.6.1.4.1.40418.2.4.4.1.0'  # Name/OID: erd3temperatureSensor.0; Value (Integer): 26
+    target_value2 = '.1.3.6.1.4.1.40418.2.4.4.2.2.0'  # Name/OID: erd3temperatureSensorOut1.0; Value (Integer): 21
+    target_value3 = '.1.3.6.1.4.1.40418.2.4.2.3.0'  # Name/OID: erd3remoteControlContact11.0; Value (Integer): manON(0)
+    target_value4 = '.1.3.6.1.4.1.40418.2.4.2.1.0'  # Name/OID: erd3resetSmartContact10.0; Value (Integer): bypass(0)
+    target_value5 = '.1.3.6.1.4.1.40418.2.4.2.3.0'  # erd3remoteControlContact11
+
+    check_iod = get_one_iod(target_value3)
+    type_mod_iod = int(check_iod.split('=')[1])
+
+    if type_mod_iod == 0:
+        set_one_iod(1)
+    elif type_mod_iod == 1:
+        set_one_iod(0)
+
+    # print(ans)
+
+
+if __name__ == '__main__':
+    power_managment()
