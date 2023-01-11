@@ -91,17 +91,28 @@ def power_managment():
     target_value3 = '.1.3.6.1.4.1.40418.2.4.2.3.0'  # Name/OID: erd3remoteControlContact11.0; Value (Integer): manON(0)
     target_value4 = '.1.3.6.1.4.1.40418.2.4.2.1.0'  # Name/OID: erd3resetSmartContact10.0; Value (Integer): bypass(0)
     target_value5 = '.1.3.6.1.4.1.40418.2.4.2.3.0'  # erd3remoteControlContact11
+    try:
+        check_iod = get_one_iod(target_value3)
+        type_mod_iod = int(check_iod.split('=')[1])
 
-    check_iod = get_one_iod(target_value3)
-    type_mod_iod = int(check_iod.split('=')[1])
+        if type_mod_iod == 0:
+            set_one_iod(1)
+        elif type_mod_iod == 1:
+            set_one_iod(0)
+        result = get_one_iod(target_value3)
+        handler_logger.info(result)
+        return True
+    except Exception as er:
+        handler_logger.exception(er)
+        return False
 
-    if type_mod_iod == 0:
-        set_one_iod(1)
-    elif type_mod_iod == 1:
-        set_one_iod(0)
 
-    # print(ans)
+def password_handler(password):
+    power_pswrd = '12345'
+    if password == power_pswrd:
+        return True
+    else:
+        return False
 
-
-if __name__ == '__main__':
-    power_managment()
+# if __name__ == '__main__':
+#     power_managment()
