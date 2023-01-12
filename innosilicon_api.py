@@ -3,7 +3,12 @@ from pprint import pprint
 from typing import Type
 import logging
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    filename='whats-log.txt',
+    format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
+)
 logger = logging.getLogger("[innosilicon_api]")
 
 miners = [
@@ -35,12 +40,3 @@ def get_summary(response: DragonAPI) -> dict:
         return summary_from_asic
     except Exception as er:
         logger.exception(er)
-
-
-# if __name__ == '__main__':
-#     resp = get_asic_info(host=miners[0], username='admin', password="KX26d'")
-#     answer1 = get_summary(resp)
-#     resp = get_asic_info(host=miners[1], username='admin', password="KX26d'")
-#     answer2 = get_summary(resp)
-#     print(answer1)
-#     print(answer2)

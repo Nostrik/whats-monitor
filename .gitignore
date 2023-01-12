@@ -3,3 +3,5 @@ w-venv/
 venv/
 .idea/
 .env
+whats-log.txt
+log.txt

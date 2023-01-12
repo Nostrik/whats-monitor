@@ -6,8 +6,14 @@ from innosilicon_api import get_asic_info, get_summary
 from config import glob_miners_list
 from erd_api import set_one_iod, get_one_iod
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    filename='whats-log.txt',
+    format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
+)
 handler_logger = logging.getLogger('[handlers]')
+POWER_PASS_CHECK = False
 
 
 def get_one_whatsminer_with_api(miner_ip_address: str):
@@ -91,20 +97,49 @@ def power_managment():
     target_value3 = '.1.3.6.1.4.1.40418.2.4.2.3.0'  # Name/OID: erd3remoteControlContact11.0; Value (Integer): manON(0)
     target_value4 = '.1.3.6.1.4.1.40418.2.4.2.1.0'  # Name/OID: erd3resetSmartContact10.0; Value (Integer): bypass(0)
     target_value5 = '.1.3.6.1.4.1.40418.2.4.2.3.0'  # erd3remoteControlContact11
+    global POWER_PASS_CHECK
     try:
         check_iod = get_one_iod(target_value3)
         type_mod_iod = int(check_iod.split('=')[1])
-
         if type_mod_iod == 0:
             set_one_iod(1)
         elif type_mod_iod == 1:
             set_one_iod(0)
         result = get_one_iod(target_value3)
         handler_logger.info(result)
+        POWER_PASS_CHECK = False
         return True
     except Exception as er:
         handler_logger.exception(er)
         return False
+
+
+def power_check():
+    target_value3 = '.1.3.6.1.4.1.40418.2.4.2.3.0'  # Name/OID: erd3remoteControlContact11.0; Value (Integer): manON(0)
+    try:
+        check_iod = get_one_iod(target_value3)
+        type_mod_iod = int(check_iod.split('=')[1])
+        if type_mod_iod == 0:
+            return False
+        elif type_mod_iod == 1:
+            return True
+    except Exception as er:
+        handler_logger.exception(er)
+
+
+def power_pass_set_true():
+    global POWER_PASS_CHECK
+    POWER_PASS_CHECK = True
+
+
+def power_pass_set_false():
+    global POWER_PASS_CHECK
+    POWER_PASS_CHECK = False
+
+
+def power_pass_check():
+    global POWER_PASS_CHECK
+    return POWER_PASS_CHECK
 
 
 def password_handler(password):

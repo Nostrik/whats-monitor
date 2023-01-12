@@ -50,7 +50,7 @@ class Innosilicon:
     def get_info(self):
         miner_info = f"Miner type: {self.name}, ip: {self.ip_address}\n"\
                      f"User: {self.user}, Fan duty: {self.fan_duty}\n"\
-                     f"Hash-rate: {self.total_hash} /more"
+                     f"Hash-rate: {self.total_hash}"
         return miner_info
 
 

@@ -2,7 +2,12 @@ from whatsminer import WhatsminerAccessToken, WhatsminerAPI
 from pprint import pprint
 import logging
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    filename='whats-log.txt',
+    format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
+)
 logger = logging.getLogger("[whatsminer_api]")
 
 w_miners = [

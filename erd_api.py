@@ -64,7 +64,7 @@ def set_one_iod(on_off: int):
         for varBind in varBinds:
             print(' = '.join([x.prettyPrint() for x in varBind]))
 
-
-if __name__ == "__main__":
-    # get_one_iod()
-    set_one_iod()
+#
+# if __name__ == "__main__":
+#     # get_one_iod()
+#     set_one_iod()

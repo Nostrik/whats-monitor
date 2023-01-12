@@ -6,9 +6,15 @@ from config import token_bot
 from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
-from handlers import get_all_miners, power_managment, password_handler
+from handlers import get_all_miners, power_managment, power_pass_set_true, power_pass_check, power_pass_set_false, \
+    power_check
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    filename='whats-log.txt',
+    format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
+)
 bot_logger = logging.getLogger('[bot_logger]')
 bot = Bot(token=token_bot)
 dp = Dispatcher(bot)
@@ -29,16 +35,33 @@ async def cmd_start(message: types.Message):
     bot_logger.info('user enter help command')
     await message.answer(
         "Actions for asic farm:\n" +
-        "/power - for manage power options\n" +
+        "/power - manage power options\n" +
+        "/check_power - check on/off power\n" +
         "/show - show all miners\n" +
-        "/ping - ping network items"
+        "/ping - ping network items\n" +
+        "/log - read logs"
     )
 
 
-#  cmd for power func
 @dp.message_handler(commands=["power"])
 async def cmd_pwer(message: types.Message):
     await message.answer('Power options:   🔌', reply_markup=kb_power_options)
+
+
+@dp.message_handler(commands=["check_power"])
+async def checker_power_all_farm_to_snmp(message: types.Message):
+    bot_logger.info('user enter check_power command')
+    if power_check() is True:
+        await message.answer('Power is On 🟢')
+        bot_logger.info('power is on')
+    elif power_check() is False:
+        await message.answer('Power is Off 🔴')
+        bot_logger.info('power is off')
+    # this part not work
+    elif power_pass_check() == 'erd is not available':
+        msg_error = ' ERD-3s api has problem ⚠️'
+        await message.answer(msg_error)
+        bot_logger.error(msg_error)
 
 
 # for show cmd
@@ -52,23 +75,34 @@ async def show_all(message: types.Message):
     await message.answer('-- end --')
 
 
+@dp.message_handler(commands=["log"])
+async def download_log_file(message: types.Message):
+    await message.answer('take the log file')
+    file = open('whats-log.txt', 'r')
+    # print(file.read())
+    await bot.send_document(message.chat.id, file)
+    file.close()
+
+
 @dp.callback_query_handler(text='on/off')
 async def power_manager(callback: types.CallbackQuery):
-    # await message.answer('ON/OFF')
     bot_logger.info('user enter ON/OFF farm')
     await callback.message.answer('Please input password: 🔑')
-    dp.register_callback_query_handler(check_password)
-    #
-    # if not power_managment():
-    #     msg_error = ' ⚠️ ERD-3s api has problem ⚠️'
-    #     bot_logger.error(msg_error)
-    #     await callback.message.answer(msg_error)
-    # await callback.message.answer('- done -')
+    power_pass_set_true()
 
 
-@dp.message_handler()
+@dp.message_handler(content_types=['text'])
 async def check_password(message: types.Message):
-    bot_logger.info('check_pass')
+    if message.text == '123' and power_pass_check():
+        if power_managment():
+            await message.answer('Done ✅')
+        else:
+            msg_error = ' ERD-3s api has problem ⚠️'
+            bot_logger.error(msg_error)
+            await message.answer(msg_error)
+    elif power_pass_check():
+        power_pass_set_false()
+        await message.answer('Password incorrect 🚫')
 
 
 async def main():
