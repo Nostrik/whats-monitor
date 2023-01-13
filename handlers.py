@@ -9,7 +9,7 @@ from erd_api import set_one_iod, get_one_iod
 # logging.basicConfig(level=logging.INFO)
 logging.basicConfig(
     level=logging.INFO,
-    filename='whats-log.txt',
+    # filename='whats-log.txt',
     format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
 )
 handler_logger = logging.getLogger('[handlers]')
@@ -125,6 +125,7 @@ def power_check():
             return True
     except Exception as er:
         handler_logger.exception(er)
+        return None
 
 
 def power_pass_set_true():

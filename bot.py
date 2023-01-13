@@ -12,7 +12,7 @@ from handlers import get_all_miners, power_managment, power_pass_set_true, power
 # logging.basicConfig(level=logging.INFO)
 logging.basicConfig(
     level=logging.INFO,
-    filename='whats-log.txt',
+    # filename='whats-log.txt',
     format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
 )
 bot_logger = logging.getLogger('[bot_logger]')
@@ -38,8 +38,8 @@ async def cmd_start(message: types.Message):
         "/power - manage power options\n" +
         "/check_power - check on/off power\n" +
         "/show - show all miners\n" +
-        "/ping - ping network items\n" +
-        "/log - read logs"
+        "/ping - ping network items\n"
+        # "/log - read logs"
     )
 
 
@@ -58,7 +58,7 @@ async def checker_power_all_farm_to_snmp(message: types.Message):
         await message.answer('Power is Off 🔴')
         bot_logger.info('power is off')
     # this part not work
-    elif power_pass_check() == 'erd is not available':
+    elif power_check() is None:
         msg_error = ' ERD-3s api has problem ⚠️'
         await message.answer(msg_error)
         bot_logger.error(msg_error)
@@ -75,13 +75,11 @@ async def show_all(message: types.Message):
     await message.answer('-- end --')
 
 
-@dp.message_handler(commands=["log"])
-async def download_log_file(message: types.Message):
-    await message.answer('take the log file')
-    file = open('whats-log.txt', 'r')
-    # print(file.read())
-    await bot.send_document(message.chat.id, file)
-    file.close()
+# @dp.message_handler(commands=["log"])
+# async def download_log_file(message: types.Message):
+#     await message.answer('take the log file')
+#     # file_path = file.file_path
+#     destination = r'C:\Users\Maksik\Documents\whats_monitor\whats-log.txt'
 
 
 @dp.callback_query_handler(text='on/off')
