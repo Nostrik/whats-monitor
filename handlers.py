@@ -81,13 +81,16 @@ def set_none_type_miner(miner_ip_address: str):
 def get_all_miners():
     miners_obj_list = []
     for miner_note in glob_miners_list:
-        if miner_note['code_name'] == 'WM':
-            miners_obj_list.append(get_one_whatsminer_with_api(miner_note['ip']))
-        elif miner_note['code_name'] == 'IS':
-            miners_obj_list.append(get_one_innosilicon_with_api(miner_note['ip']))
-        else:
-            miners_obj_list.append()
-            handler_logger.error('There is no handler for this equipment')
+        try:
+            if miner_note['code_name'] == 'WM':
+                miners_obj_list.append(get_one_whatsminer_with_api(miner_note['ip']))
+            elif miner_note['code_name'] == 'IS':
+                miners_obj_list.append(get_one_innosilicon_with_api(miner_note['ip']))
+            else:
+                miners_obj_list.append()
+                handler_logger.error('There is no handler for this equipment')
+        except Exception:
+            miners_obj_list.append(set_none_type_miner(miner_note['ip']))
     return miners_obj_list
 
 
