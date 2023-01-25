@@ -1,6 +1,8 @@
 import asyncio
 import time
 import logging
+# import sys
+# from loguru import logger
 from aiogram import Bot, Dispatcher, types
 from config import token_bot
 from aiogram.types import ReplyKeyboardRemove, \
@@ -15,6 +17,8 @@ logging.basicConfig(
     # filename='whats-log.txt',
     format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
 )
+
+# logger.add(sys.stderr, format="{time} {level} [bot_logger] {message}", filter="my_module", level="DEBUG")
 bot_logger = logging.getLogger('[bot_logger]')
 bot = Bot(token=token_bot)
 dp = Dispatcher(bot)
@@ -111,4 +115,6 @@ async def main():
 
 
 if __name__ == "__main__":
+    # logger.info('start')
+    bot_logger.info('start')
     asyncio.run(main())
