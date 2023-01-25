@@ -61,4 +61,6 @@ class NotAvailableMiner:
     error_msg: str
 
     def is_miner(self):
-        return 'NoneType'
+        info = f"ip: {self.ipaddress}\n"\
+               f"msg: {self.error_msg}"
+        return info

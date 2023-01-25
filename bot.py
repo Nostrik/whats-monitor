@@ -71,7 +71,10 @@ async def show_all(message: types.Message):
     await message.answer('-- all miners --')
     all_miners = get_all_miners()
     for one_miner in all_miners:
-        await message.answer(one_miner.get_info())
+        if one_miner is not None:
+            await message.answer(one_miner.get_info())
+        if one_miner is None:
+            await message.answer('miner is not available..')
     await message.answer('-- end --')
 
 
