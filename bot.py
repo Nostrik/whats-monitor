@@ -4,7 +4,7 @@ import logging
 # import sys
 # from loguru import logger
 from aiogram import Bot, Dispatcher, types
-from config import token_bot
+from config import token_bot, token_bot2
 from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
@@ -14,7 +14,7 @@ from handlers import get_all_miners, power_managment, power_pass_set_true, power
 # logging.basicConfig(level=logging.INFO)
 logging.basicConfig(
     level=logging.INFO,
-    # filename='whats-log.txt',
+    filename='log.txt',
     format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
 )
 

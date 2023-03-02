@@ -1,0 +1,5 @@
+/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/dragon_rest/dragons.py
+
+    def errors(self):
+        """Returns errors"""
+        return self.__post('/api/getErrorDetail')

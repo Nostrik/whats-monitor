@@ -6,7 +6,7 @@ import logging
 # logging.basicConfig(level=logging.INFO)
 logging.basicConfig(
     level=logging.INFO,
-    # filename='whats-log.txt',
+    filename='log.txt',
     format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
 )
 logger = logging.getLogger("[innosilicon_api]")
@@ -42,15 +42,15 @@ def get_summary(response: DragonAPI) -> dict:
         logger.exception(er)
 
 
-def get_something(response: DragonAPI) -> dict:
+def get_errors(response: DragonAPI) -> dict:
     try:
-        something_from_asic = response.errors()
-        return something_from_asic
+        errors_from_asic = response.errors()
+        return errors_from_asic
     except Exception as er:
         logger.exception(er)
 
 
 if __name__ == '__main__':
     token = get_asic_info('192.168.1.68', 'admin', "KX26d'")
-    result = get_something(token)
+    result = get_errors(token)
     pprint(result)
