@@ -40,3 +40,17 @@ def get_summary(response: DragonAPI) -> dict:
         return summary_from_asic
     except Exception as er:
         logger.exception(er)
+
+
+def get_something(response: DragonAPI) -> dict:
+    try:
+        something_from_asic = response.errors()
+        return something_from_asic
+    except Exception as er:
+        logger.exception(er)
+
+
+if __name__ == '__main__':
+    token = get_asic_info('192.168.1.68', 'admin', "KX26d'")
+    result = get_something(token)
+    pprint(result)
