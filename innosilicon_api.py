@@ -6,7 +6,7 @@ import logging
 # logging.basicConfig(level=logging.INFO)
 logging.basicConfig(
     level=logging.INFO,
-    filename='log.txt',
+    # filename='log.txt',
     format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
 )
 logger = logging.getLogger("[innosilicon_api]")

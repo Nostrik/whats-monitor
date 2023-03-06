@@ -7,4 +7,6 @@ cmd = 'nmap -sP 192.168.0.1/24'
 args = shlex.split(cmd)
 
 if __name__ == "__main__":
-    os.system(cmd)
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    p.wait()
+    time.sleep(10)
