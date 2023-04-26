@@ -1,0 +1,159 @@
+log2023-03-06 13:55:45,543 [bot_logger].<module> +120: INFO     [20533] start
+2023-03-06 13:55:45,545 aiogram.dispatcher.dispatcher.start_polling +358: INFO     [20533] Start polling.
+2023-03-06 13:56:03,391 [bot_logger].cmd_start +39: INFO     [20533] user enter help command
+2023-03-06 13:56:05,174 asyncio.default_exception_handler +1744: ERROR    [20533] Task exception was never retrieved
+future: <Task finished name='Task-28' coro=<Dispatcher._process_polling_updates() done, defined at /home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Invalid file http url specified: wrong port number specified in the url')>
+Traceback (most recent call last):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/bot.py", line 90, in download_log_file
+    await bot.send_document(message.chat.id, destination)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 757, in send_document
+    result = await self.request(api.Methods.SEND_DOCUMENT, payload, files)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Invalid file http url specified: wrong port number specified in the url
+2023-03-06 13:56:11,307 asyncio.default_exception_handler +1744: ERROR    [20533] Task exception was never retrieved
+future: <Task finished name='Task-40' coro=<Dispatcher._process_polling_updates() done, defined at /home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Invalid file http url specified: wrong port number specified in the url')>
+Traceback (most recent call last):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/bot.py", line 90, in download_log_file
+    await bot.send_document(message.chat.id, destination)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 757, in send_document
+    result = await self.request(api.Methods.SEND_DOCUMENT, payload, files)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Invalid file http url specified: wrong port number specified in the url
+2023-03-06 13:56:13,162 asyncio.default_exception_handler +1744: ERROR    [20533] Task exception was never retrieved
+future: <Task finished name='Task-46' coro=<Dispatcher._process_polling_updates() done, defined at /home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Invalid file http url specified: wrong port number specified in the url')>
+Traceback (most recent call last):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/bot.py", line 90, in download_log_file
+    await bot.send_document(message.chat.id, destination)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 757, in send_document
+    result = await self.request(api.Methods.SEND_DOCUMENT, payload, files)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Invalid file http url specified: wrong port number specified in the url
+2023-03-06 13:56:19,965 aiogram.dispatcher.dispatcher.start_polling +405: WARNING  [20533] Polling is stopped.
+2023-03-06 13:56:20,084 aiogram.dispatcher.dispatcher.stop_polling +433: INFO     [20533] Stop polling...
+2023-03-06 13:56:20,085 asyncio.default_exception_handler +1744: ERROR    [20533] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f2e0557d150>
+2023-03-06 13:56:20,085 asyncio.default_exception_handler +1744: ERROR    [20533] Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7f2e05546380>, 16984.59763021)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7f2e0557d030>
+2023-03-06 13:56:42,056 [bot_logger].<module> +120: INFO     [20549] start
+2023-03-06 13:56:42,058 aiogram.dispatcher.dispatcher.start_polling +358: INFO     [20549] Start polling.
+2023-03-06 13:56:45,106 [bot_logger].cmd_start +39: INFO     [20549] user enter help command
+2023-03-06 13:56:48,565 asyncio.default_exception_handler +1744: ERROR    [20549] Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<Dispatcher._process_polling_updates() done, defined at /home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Invalid file http url specified: wrong port number specified in the url')>
+Traceback (most recent call last):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/bot.py", line 90, in download_log_file
+    await bot.send_document(message.chat.id, destination)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 757, in send_document
+    result = await self.request(api.Methods.SEND_DOCUMENT, payload, files)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Invalid file http url specified: wrong port number specified in the url
+2023-03-06 13:56:51,180 aiogram.dispatcher.dispatcher.start_polling +405: WARNING  [20549] Polling is stopped.
+2023-03-06 13:56:51,286 aiogram.dispatcher.dispatcher.stop_polling +433: INFO     [20549] Stop polling...
+2023-03-06 13:56:51,287 asyncio.default_exception_handler +1744: ERROR    [20549] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f11ea57cf70>
+2023-03-06 13:56:51,287 asyncio.default_exception_handler +1744: ERROR    [20549] Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7f11ea546e60>, 17019.998299968)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7f11ea57ce50>
+2023-03-06 13:57:53,259 [bot_logger].<module> +120: INFO     [20602] start
+2023-03-06 13:57:53,260 aiogram.dispatcher.dispatcher.start_polling +358: INFO     [20602] Start polling.
+2023-03-06 13:57:57,000 asyncio.default_exception_handler +1744: ERROR    [20602] Task exception was never retrieved
+future: <Task finished name='Task-8' coro=<Dispatcher._process_polling_updates() done, defined at /home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Invalid file http url specified: wrong port number specified in the url')>
+Traceback (most recent call last):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/nostrik/PycharmProjects/whats-monitor/bot.py", line 90, in download_log_file
+    await bot.send_document(message.chat.id, destination)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 757, in send_document
+    result = await self.request(api.Methods.SEND_DOCUMENT, payload, files)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/nostrik/PycharmProjects/whats-monitor/venv/lib/python3.10/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Invalid file http url specified: wrong port number specified in the url
+2023-03-06 13:57:58,083 aiogram.dispatcher.dispatcher.start_polling +405: WARNING  [20602] Polling is stopped.
+2023-03-06 13:57:58,191 aiogram.dispatcher.dispatcher.stop_polling +433: INFO     [20602] Stop polling...
+2023-03-06 13:57:58,192 asyncio.default_exception_handler +1744: ERROR    [20602] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f077557d0c0>
+2023-03-06 13:57:58,192 asyncio.default_exception_handler +1744: ERROR    [20602] Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7f07755466e0>, 17088.435009496)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7f077557cfa0>

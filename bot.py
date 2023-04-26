@@ -14,7 +14,7 @@ from handlers import get_all_miners, power_managment, power_pass_set_true, power
 # logging.basicConfig(level=logging.INFO)
 logging.basicConfig(
     level=logging.INFO,
-    filename='log.txt',
+    # filename='log.txt',
     format='%(asctime)s %(name)s.%(funcName)s +%(lineno)s: %(levelname)-8s [%(process)d] %(message)s'
 )
 
@@ -42,8 +42,8 @@ async def cmd_start(message: types.Message):
         "/power - manage power options\n" +
         "/check_power - check on/off power\n" +
         "/show - show all miners\n" +
-        "/ping - ping network items\n"
-        # "/log - read logs"
+        # "/ping - ping network items\n"
+        "/log - read logs"
     )
 
 
@@ -82,11 +82,13 @@ async def show_all(message: types.Message):
     await message.answer('-- end --')
 
 
-# @dp.message_handler(commands=["log"])
-# async def download_log_file(message: types.Message):
-#     await message.answer('take the log file')
-#     # file_path = file.file_path
-#     destination = r'C:\Users\Maksik\Documents\whats_monitor\whats-log.txt'
+@dp.message_handler(commands=["log"])
+async def download_log_file(message: types.Message):
+    await message.answer('take the log file')
+    # file_path = file.file_path
+    destination = r'C:\Users\Maksik\Documents\whats_monitor\whats-log.txt'
+    d = '/home/nostrik/PycharmProjects/whats-monitor/log.txt'
+    await bot.send_document(message.chat.id, d)
 
 
 @dp.callback_query_handler(text='on/off')
@@ -115,6 +117,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    # logger.info('start')
     bot_logger.info('start')
     asyncio.run(main())
